@@ -113,7 +113,7 @@ class Schedule: ObservableObject {
     func isToday(activities: [Activity]) -> Bool {
         let today = Calendar.current.startOfDay(for: Date())
         let allDays = activities.map { Calendar.current.startOfDay(for: $0.date) }
-        return allDays.contains(today)
+        return allDays.contains(where: { $0 == today || $0 < today })
     }
     
 }
